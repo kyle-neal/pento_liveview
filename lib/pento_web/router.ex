@@ -21,7 +21,12 @@ defmodule PentoWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", PentoWeb do
+  scope "/v1", PentoWeb do
+    pipe_through :browser
+    live "/guess", WrongLive
+  end
+
+  # end  # scope "/api", PentoWeb do
   #   pipe_through :api
   # end
 
@@ -37,6 +42,8 @@ defmodule PentoWeb.Router do
 
     scope "/" do
       pipe_through :browser
+      get "/", PageController, :index
+      live "/guess", WrongLive
 
       live_dashboard "/dashboard", metrics: PentoWeb.Telemetry
     end

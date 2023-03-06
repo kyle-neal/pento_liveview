@@ -1,5 +1,5 @@
 defmodule PentoWeb.WrongLive do
-  alias PentoWeb.WrongLive
+  alias PentoWeb.Router.Helpers, as: Routes
   use Phoenix.LiveView, layout: {PentoWeb.LayoutView, "live.html"}
 
   def mount(_params, _session, socket) do
@@ -12,11 +12,12 @@ defmodule PentoWeb.WrongLive do
     <h1>Your score: <%= @score %></h1>
     <h2><%= @message %></h2>
     <h2>
-      <%= for n <- 1..10 do %>
-        <a href="#" phx-click="guess" phx-value-number={n}><%= n %></a>
-      <% end %>
-      <%= if @won_game do %>
-        <%= live_patch("Retry?", to: Routes.live_path(@socket, WrongLive)) %>
+      <%= if @guessed_correctly do %>
+        <%= live_patch("Retry?", to: Routes.live_path(@socket, PentoWeb.WrongLive)) %>
+      <% else %>
+        <%= for n <- 1..10 do %>
+          <a href="#" phx-click="guess" phx-value-number={n}><%= n %></a>
+        <% end %>
       <% end %>
     </h2>
     <footer>

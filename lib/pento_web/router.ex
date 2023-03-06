@@ -42,8 +42,6 @@ defmodule PentoWeb.Router do
 
     scope "/" do
       pipe_through :browser
-      get "/", PageController, :index
-      live "/guess", WrongLive
 
       live_dashboard "/dashboard", metrics: PentoWeb.Telemetry
     end

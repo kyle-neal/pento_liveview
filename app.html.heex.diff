@@ -1,0 +1,18 @@
+diff --git a/lib/pento_web/templates/layout/app.html.heex b/lib/pento_web/templates/layout/app.html.heex
+index 169aed9..75bf201 100644
+--- a/lib/pento_web/templates/layout/app.html.heex
++++ b/lib/pento_web/templates/layout/app.html.heex
+@@ -1,5 +1,9 @@
+ <main class="container">
+-  <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+-  <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
++  <p class="alert alert-info" role="alert">
++    <%= get_flash(@conn, :info) %>
++  </p>
++  <p class="alert alert-danger" role="alert">
++    <%= get_flash(@conn, :error) %>
++  </p>
+   <%= @inner_content %>
+-</main>
++</main>
+\ No newline at end of file

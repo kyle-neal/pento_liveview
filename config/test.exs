@@ -17,14 +17,17 @@ config :pento, Pento.Repo,
 # you can enable the server option below.
 config :pento, PentoWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "BZF5m6rrc/BtEQCijxzAq01+Hg5ag1lZ7AiLuBGU9d5PbMnmwDa3wcqkGvvWHmDI",
+  secret_key_base: "SdofS6sFVb5Ab4SdvkuqSGtDPuiNluKRxCf6BJ7Zzn99a38brwhbfU5PZyteam6i",
   server: false
 
 # In test we don't send emails.
 config :pento, Pento.Mailer, adapter: Swoosh.Adapters.Test
 
+# Disable swoosh api client as it is only required for production adapters.
+config :swoosh, :api_client, false
+
 # Print only warnings and errors during test
-config :logger, level: :warn
+config :logger, level: :warning
 
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime

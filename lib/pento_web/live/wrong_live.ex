@@ -1,6 +1,6 @@
 defmodule PentoWeb.WrongLive do
   alias PentoWeb.Router.Helpers, as: Routes
-  use Phoenix.LiveView, layout: {PentoWeb.LayoutView, "live.html"}
+  use PentoWeb, :live_view
 
   def mount(_params, _session, socket) do
     {:ok,
@@ -13,7 +13,7 @@ defmodule PentoWeb.WrongLive do
     <h2><%= @message %></h2>
     <h2>
       <%= if @guessed_correctly do %>
-        <%= live_patch("Retry?", to: Routes.live_path(@socket, PentoWeb.WrongLive)) %>
+        <a href={~p"/v1/guess"}>Retry?</a>
       <% else %>
         <%= for n <- 1..10 do %>
           <a href="#" phx-click="guess" phx-value-number={n}><%= n %></a>
@@ -26,7 +26,7 @@ defmodule PentoWeb.WrongLive do
     """
   end
 
-  def handle_event("guess", %{"number" => guess} = data, socket) do
+  def handle_event("guess", %{"number" => guess}, socket) do
     {message, score, guessed_correctly} =
       case guessed_correct?(guess) do
         true ->

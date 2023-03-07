@@ -1,16 +1,10 @@
 <section class="phx-hero">
   <h1><%= gettext("Welcome to %{name}!", name: "Kyle's LiveView Playground") %></h1>
   <p>Let's get to codin!</p>
-  <%!-- <img
-    src="https://b7w9u9i4.rocketcdn.me/wp-content/uploads/2021/09/Malcom_Reed_Whole_Smoked_Ribeye_Holiday_Recipe.jpg"
-    alt="Girl in a jacket"
-    width="700"
-    height="500"
-  /> --%>
   <h4>Site Navigation</h4>
   <ul>
     <li>
-      <a href={Routes.live_path(@conn, PentoWeb.WrongLive)}>You're Wrong! (beta1)</a>
+      <a href={~p"/v1/guess"}>You're Wrong! (beta1)</a>
     </li>
   </ul>
 </section>
